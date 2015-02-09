@@ -2,26 +2,18 @@ class Complement
   def self.of_dna(dna_strand)
     dna = dna_strand.split(//)
     rna = []
+    dna_complements = {'G' => 'C', 'C' => 'G', 'T' => 'A', 'A' => 'U'}
     dna.each do |nucleotide|
-      case nucleotide
-        when 'G' then rna.push('C')
-        when 'C' then rna.push('G')
-        when 'T' then rna.push('A')
-        when 'A' then rna.push('U')
-      end
+        rna.push(dna_complements[nucleotide])
     end
     rna.join
   end
   def self.of_rna(rna_strand)
     rna = rna_strand.split(//)
     dna = []
+    rna_complements = {'C' => 'G', 'G' => 'C', 'A' => 'T', 'U' => 'A'}
     rna.each do |nucleotide|
-      case nucleotide
-      when 'C' then dna.push('G')
-      when 'G' then dna.push('C')
-      when 'A' then dna.push('T')
-      when 'U' then dna.push('A')
-      end
+      dna.push(rna_complements[nucleotide])
     end
     dna.join
   end
